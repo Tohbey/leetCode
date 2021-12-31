@@ -14,8 +14,8 @@ class Solution:
             return head
         
         current = head.next 
-        prev = head 
-        
+        prev = head         
+
         while(current):
             if current.val == prev.val:
                 prev.next = current.next
