@@ -20,6 +20,5 @@ class Solution:
             
             return [balance, 1+max(left[1], right[1])]
             
-        
         return dfs(root)[0]
         
