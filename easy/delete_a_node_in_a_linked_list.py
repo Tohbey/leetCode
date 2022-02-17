@@ -5,4 +5,7 @@ class ListNode:
         self.next = None
 
 class Solution:
-    def deleteNode(self, node):
+    def deleteNode(self, node:ListNode):
+        node.val = node.next.val
+        nextNode = node.next.next
+        node.next = nextNode
