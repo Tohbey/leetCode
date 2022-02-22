@@ -1,5 +1,7 @@
 from itertools import accumulate
 
+from pip import List
+
 
 class NumArray:
 
