@@ -13,14 +13,23 @@ class TreeNode:
 
 class Solution:
     def findMode(self, root: OPTIONAL[TreeNode]) -> List[int]:
-        modes = []
-        res = self.inorder(root, [])
+        m = {}
         
-
-    def inorder(self, root, lst):
-        if root:
-            self.inorder(root.left, lst)
-            lst.append(root.val)
-            self.inorder(root.right, lst)
-
-        return lst
+        def dfs(tree):
+            
+            if not tree:
+                return
+            
+            if tree.val in m:
+                m[tree.val] += 1
+            else:
+                m[tree.val] = 1
+            
+            dfs(tree.left)
+            dfs(tree.right)
+        
+        dfs(root)
+        
+        mx = max(m.values())
+        
+        return [i for i in m if m[i] == mx]
