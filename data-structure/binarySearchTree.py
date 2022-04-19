@@ -89,10 +89,10 @@ class Node:
                 root = None
                 return temp
             
-            temp = Node.minValueNode(root.right)
+            minValue = Node.find_min(root.right)
             
-            root.value = temp.value
-            root.right = Node.deleteNode(root.right, temp.value)
+            root.value = minValue
+            root.right = Node.deleteNode(root.right, minValue)
             
             return root
     
@@ -100,16 +100,6 @@ class Node:
         if node is None:
             return 
         
-            
-    def minValueNode(node): 
-        while node.left is not None:
-            current = node.left
-            
-        return current
-            
-
-
-
 root = 6
 res = Node(root)
 res.insert(8)
@@ -121,12 +111,9 @@ res.insert(10)
 res.insert(14)
 res.insert(4)
 
-# res.levelOrder()
-res.deleteNode(8)
-
 print(res.searching(4))
-print(res.minValueNode())
-print(res.maxValueNode())
+
+res.deleteNode(8)
 
 print(res.find_min())
 print(res.find_max())
@@ -136,4 +123,3 @@ res.postorder()
 print('\n')
 res.preorder()
 print('\n')
-res.levelOrder()
