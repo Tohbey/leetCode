@@ -1,3 +1,7 @@
+import collections
+from typing import Collection
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -97,8 +101,32 @@ class Node:
             return root
     
     def levelOrder(node):
+        ans = []
         if node is None:
-            return 
+            return ans
+        
+        queue = collections.deque()
+        queue.append(node)
+        
+        while queue:
+            currSize = len(queue)
+            currList = []
+            
+            while currSize > 0:
+                
+                currNode = queue.popleft()
+                currList.append(currNode.value)
+                currSize -=1
+                
+                if currNode.left is not None:
+                    queue.append(currNode.left)
+                if currNode.right is not None:
+                    queue.append(currNode.right)
+                    
+            ans.append(currList) 
+        
+        print(ans)
+        return ans
 
     def minValueNode(node):
         current = node
@@ -132,3 +160,4 @@ res.postorder()
 print('\n')
 res.preorder()
 print('\n')
+res.levelOrder()
