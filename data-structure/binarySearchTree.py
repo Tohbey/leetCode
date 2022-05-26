@@ -127,7 +127,33 @@ class Node:
         
         print(ans)
         return ans
-
+    
+    def zigzagLevelOrder(node):
+        ans = []
+        idx = 0        
+        queue = collections.deque()
+        queue.append(node)
+        
+        while queue:
+            currSize = len(queue)
+            currList = []
+            while currSize > 0:
+                currNode = queue.popleft()
+                currSize -=1
+                
+                if currNode:
+                    currList.append(currNode.value)
+                    queue.append(currNode.left)
+                    queue.append(currNode.right)
+            if currList:
+                if idx % 2 == 0:
+                    ans.append(currList)
+                else:
+                    ans.append(currList[::-1])
+                idx +=1    
+        print(ans)
+        return ans
+    
     def minValueNode(node):
         current = node
     
@@ -161,3 +187,5 @@ print('\n')
 res.preorder()
 print('\n')
 res.levelOrder()
+print('\n')
+res.zigzagLevelOrder()
